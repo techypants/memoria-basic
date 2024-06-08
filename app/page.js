@@ -14,7 +14,9 @@ export default function Home() {
   // bg-[#e0ca4d28]
   return (
     <div className="bg-[#e4cc43] h-[100vh] overflow-y-auto">
-      <Front />
+      <div>
+        <Front />
+      </div>
 
       {/* <Wordslist /> */}
       <div className="w-full pb-4 mt-8 flex justify-center bg-[#e4cc43]">
