@@ -3,10 +3,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import Checker from "./checker";
 import Timer from "./Timer";
+import { IoEyeOutline } from "react-icons/io5";
 
 export default function Wordslist() {
   const [words, setWords] = useState([]);
   const hasfetched = useRef(false);
+  const [showChecker, setShowChecker] = useState(false);
 
   useEffect(() => {
     const fetchWords = async () => {
@@ -39,10 +41,18 @@ export default function Wordslist() {
     fetchWords();
   }, []);
 
+  function handleCheck() {
+    setShowChecker(true);
+  }
+
   return (
-    <div className="w-[80%] m-auto">
+    <div className="w-[80%] h-auto pb-[30vh] bg-[#F6EFCB] m-auto">
       <Timer duration={60}>
-        <div className="grid grid-cols-4 gap-2 m-auto mb-8">
+        <div
+          className={`${
+            showChecker ? "blur-[4px]" : "blur-none"
+          } flex flex-wrap lg:grid grid-cols-4 gap-2 m-auto mb-8`}
+        >
           {/* {console.log(words)} */}
           {words.map((word, index) => (
             <p
@@ -54,7 +64,32 @@ export default function Wordslist() {
           ))}
         </div>
       </Timer>
-      <Checker words={words} />
+      <div className="w-full flex justify-center text-[24px] mb-4">
+        <button
+          onClick={() => {
+            setShowChecker(false); // Set showChecker to false immediately
+
+            setTimeout(() => {
+              setShowChecker(true); // Set showChecker to true after 1 second
+            }, 1000);
+          }}
+        >
+          <IoEyeOutline />
+        </button>
+      </div>
+      <div className="w-full  flex justify-center">
+        {showChecker ? (
+          ""
+        ) : (
+          <button
+            onClick={handleCheck}
+            className="p-8 pt-2 pb-2 bg-[#e0ca4d6e] rounded-lg m-auto text-[20px]"
+          >
+            Start
+          </button>
+        )}
+      </div>
+      {showChecker ? <Checker words={words} /> : ""}
     </div>
   );
 }

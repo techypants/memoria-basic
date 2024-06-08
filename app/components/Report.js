@@ -64,7 +64,7 @@ const Report = ({ timestamps, matches }) => {
   };
 
   return (
-    <div className="w-[500px] h-[500px] m-auto">
+    <div className="w-[85vw] h-auto lg:w-[500px] lg:h-[500px] m-auto">
       <Line data={data} options={options}></Line>
     </div>
   );

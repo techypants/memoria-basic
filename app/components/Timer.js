@@ -21,9 +21,20 @@ export default function Timer({ duration, children }) {
         <Digits time={timeleft} />
       </div>
       {/* <div>{timeleft > 0 ? `Time left:${timeleft}s ` : "Time is up!"}</div> */}
+      {/* <button
+        onClick={() => {
+          setBlur(false); // Set Blur to false immediately
+
+          setTimeout(() => {
+            setBlur(true); // Set showChecker to true after 1 second
+          }, 4000);
+        }}
+      >
+        show
+      </button> */}
       <div
         className={`${
-          blur ? "blur-sm" : "blur-none"
+          blur ? "blur-[-4px]" : "blur-none"
         } transition-filter duration-1000`}
       >
         {children}

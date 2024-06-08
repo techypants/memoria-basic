@@ -45,7 +45,7 @@ export default function Checker({ words }) {
 
   return (
     <div className="">
-      <div className="grid grid-cols-3 gap-2">
+      <div className="flex flex-wrap lg:grid grid-cols-3 gap-2">
         {words.map((word, index) => (
           <input
             key={index}
@@ -61,7 +61,9 @@ export default function Checker({ words }) {
         ))}
       </div>
       {/* <Timer duration={15}> */}
-      <Report timestamps={timestamps} matches={matches} />
+      <div className="mt-[60px]">
+        <Report timestamps={timestamps} matches={matches} />
+      </div>
       {/* </Timer> */}
     </div>
   );
